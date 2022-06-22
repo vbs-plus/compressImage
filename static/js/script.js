@@ -242,21 +242,12 @@ const deleteItem = e => {
 };
 
 shirkBtn.addEventListener('click', () => {
-  console.log(uploadFiles);
-  const form = new FormData();
   for (let i = 0; i < uploadFiles.length; i++) {
+    const form = new FormData();
     form.append('file', uploadFiles[i]);
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/upload');
+    xhr.send(form);
   }
-  const xhr = new XMLHttpRequest();
-  // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.open('POST', '/upload');
-  xhr.send(form);
-
-  // const form = new FormData();
-  // form.append('file', input.files[0]);
-  // const xhr = new XMLHttpRequest();
-  // xhr.open('POST', '/upload');
-  // // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  // xhr.send(form);
 });
 
